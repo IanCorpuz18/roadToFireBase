@@ -11,8 +11,6 @@ import {
   Dimensions
 } from 'react-native';
 import ImagePicker from 'react-native-image-picker';
-import PickLocation from '../../assets/components/PickLocation';
-
 class PickImage extends Component {
 
 
@@ -42,8 +40,10 @@ class PickImage extends Component {
           <View style={styles.placeholder}>
           <Image source={this.state.pickedImaged} style={styles.imageStyle} />
           </View>
-          <Text></Text>
+          <Text> </Text>
+          <View style={{alignSelf:"center", width:"50%"}}>
           <Button title="pick Image" onPress={this.pickImageHandler}/>
+          </View>
         </View>
        
         );

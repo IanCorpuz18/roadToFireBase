@@ -14,7 +14,9 @@
     "react-native-image-slider": "^2.0.3",
     "react-native-maps": "^0.22.1",
     "react-native-vector-icons": "^4.6.0",
-    "react-navigation": "^2.18.2"
+    "react-navigation": "^2.18.2",
+    "react-redux": "^5.1.1",
+    "redux": "^4.0.1"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",

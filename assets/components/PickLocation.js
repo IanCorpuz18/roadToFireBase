@@ -77,7 +77,7 @@ class PickLocation extends Component {
         }
         return (
 
-            <View style={{width:"100%"}}>
+            <View style={{width:"80%",alignSelf:"center"}}>
                 <View>
                     <MapView
                         onPress={this.pickLocation}
@@ -88,8 +88,9 @@ class PickLocation extends Component {
                     >
                         {marker}
                     </MapView>
+                    <Text> </Text>
                 </View>
-                <View style={{width:"50%"}}>
+                <View style={{alignSelf:"center" ,width:"50%"}}>
                 <Button title="locate Mervs" onPress={this.getLocation}  />
                 </View>
             </View>
