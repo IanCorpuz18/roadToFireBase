@@ -1,4 +1,4 @@
-import { ADD_PLACE } from '../actions/actionTypes';
+import { ADD_PLACENAME, ADD_PLACEIMAGE } from '../actions/actionTypes';
 
 initialState = {
     placeName: null
@@ -7,11 +7,16 @@ initialState = {
 export default reducer = (state = initialState, action) => {
     switch(action.type){
 
-        case ADD_PLACE:
+        case ADD_PLACENAME:
         console.log(action.placeName)
         return{
             ...state,
             placeName: action.placeName
+        }
+        case ADD_PLACEIMAGE:
+        return {
+            ...state,
+            placeImage:action.placeImage
         }
         default:
         return state;

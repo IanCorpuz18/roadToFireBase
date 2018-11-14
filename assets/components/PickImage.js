@@ -31,6 +31,9 @@ class PickImage extends Component {
           }
         });
       }
+      componentDidUpdate(){
+        this.props.passImage(this.state.pickedImaged)
+    }
       render() {
 
         return (

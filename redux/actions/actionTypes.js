@@ -1,1 +1,2 @@
-export const ADD_PLACE = "ADD_PLACE"
+export const ADD_PLACENAME = "ADD_PLACENAME"
+export const ADD_PLACEIMAGE = "ADD_PLACEIMAGE"

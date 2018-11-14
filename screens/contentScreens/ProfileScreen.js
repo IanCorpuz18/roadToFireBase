@@ -10,35 +10,72 @@ import {
   Image
 } from 'react-native';
 import { connect } from 'react-redux'
+import  MapView,{ Marker } from 'react-native-maps'
 import { explores } from '../../contentImages';
-import Profile from '../contentScreens/profile'
+import Profile from '../contentScreens/profile';
 class ProfileScreen extends Component {
   static navigationOptions = {
     header: null
   }
- 
+
   render() {
     return (
       <View style={{ backgroundColor: 'white' }}>
         <Text style={{ fontSize: 40, color: '#2f4f4f', marginBottom: 15, fontWeight: 'bold' }}> PROFILE </Text>
 
         <View >
-      <Profile/>
+          <Profile />
         </View>
         <Text>_______</Text>
         <Text>{this.props.placeName}</Text>
         <Text>_______</Text>
+        <View style={styles.placeholder}>
+          <Image source={this.props.placeImage} style={styles.imageStyle} />
+        </View>
+        <View>
+          <MapView
+            onPress={this.pickLocation}
+            initialRegion={this.props.focusedLocation}
+
+            style={styles.map}
+            ref={ref => this.map = ref}>
+           <Marker coordinate={this.props.focusedLocation} />
+          </MapView>
+        </View>
       </View>
     );
   }
-  
+
 }
 
 const mapStateToProps = state => {
   return {
-      placeName: state.sharePlace.placeName,
-    
+    placeName: state.sharePlace.placeName,
+    placeImage: state.sharePlace.placeImage,
+    focusedLocation: state.sharePlace.focusedLocation
   }
 }
 
+const styles = StyleSheet.create({
+  map: {
+    width: "100%",
+    height: 250
+},
+  placeholder: {
+    borderWidth: 1,
+    borderColor: 'black',
+    backgroundColor: '#d3d3d3',
+    width: '80%',
+    height: 150,
+    alignSelf: 'center',
+
+  },
+
+  imageStyle: {
+    width: "100%",
+    height: "100%"
+  }
+
+
+});
 export default connect(mapStateToProps)(ProfileScreen);

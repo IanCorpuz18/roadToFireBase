@@ -14,7 +14,7 @@ import {
 import ImagePicker from 'react-native-image-picker';
 import PickLocation from '../../assets/components/PickLocation';
 import PickImage from '../../assets/components/PickImage';
-import { addPlace } from '../../redux/actions/sharePlace';
+import { addPlace, addPlaceImage } from '../../redux/actions/sharePlace';
 import { connect } from 'react-redux'
 import CustomButton from '../../assets/components/customButton';
 class TripScreen extends Component {
@@ -23,7 +23,7 @@ class TripScreen extends Component {
     header: null
   }
   state = {
-    placeName: ""
+    placeName: "",
   }
   changePlaceName = (val) => {
     this.setState({
@@ -33,40 +33,43 @@ class TripScreen extends Component {
   shareButton = () => {
     console.log('button Clicked')
     this.props.addPlaceName(this.state.placeName)
-    
+
+  }
+  getImage = image => {
+    this.props.addImage(image)
   }
   render() {
 
     return (
-      <View style={{ flex:1, width: "100%" }}>
-      <ScrollView style={{ backgroundColor: 'white', width: "100%" }}>
-        <View style={{ backgroundColor: 'white', width: "100%" }}>
-          <Text style={{ fontSize: 40, color: '#2f4f4f', marginBottom: 15, fontWeight: 'bold' }}> TRIP </Text>
+      <View style={{ flex: 1, width: "100%" }}>
+        <ScrollView style={{ backgroundColor: 'white', width: "100%" }}>
+          <View style={{ backgroundColor: 'white', width: "100%" }}>
+            <Text style={{ fontSize: 40, color: '#2f4f4f', marginBottom: 15, fontWeight: 'bold' }}> TRIP </Text>
 
-          <PickImage />
-          <Text> </Text>
-          <PickLocation />
-        </View>
-        <View>
-          <Text> </Text>
-          <TextInput placeholder="Place Name" underlineColorAndroid='red'
-            value={this.state.placeName}
-            onChangeText={val => this.changePlaceName(val)} />
-          <Text> </Text>
-          <View style={{ alignSelf: "center", width: "50%" }}>
-            
-          
+            <PickImage passImage={this.getImage} />
+            <Text> </Text>
+            <PickLocation />
           </View>
-          
-        </View>
-        
-      </ScrollView>
-      <CustomButton onPress={this.shareButton}> asd</CustomButton>
+          <View>
+            <Text> </Text>
+            <TextInput placeholder="Place Name" underlineColorAndroid='red'
+              value={this.state.placeName}
+              onChangeText={val => this.changePlaceName(val)} />
+            <Text> </Text>
+            <View style={{ alignSelf: "center", width: "50%" }}>
+
+
+            </View>
+            <CustomButton onPress={this.shareButton}> SHARE MO!</CustomButton>
+          </View>
+
+        </ScrollView>
+
       </View>
-      
+
     );
   }
-  componentDidUpdate(){
+  componentDidUpdate() {
     console.log("screen is updated")
   }
 
@@ -75,9 +78,9 @@ class TripScreen extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addPlaceName: (placeName) => dispatch(addPlace(placeName))
+    addPlaceName: (placeName) => dispatch(addPlace(placeName)),
+    addImage: (placeImage) => dispatch(addPlaceImage(placeImage))
   }
 }
 export default connect(null, mapDispatchToProps)(TripScreen);
 
- 

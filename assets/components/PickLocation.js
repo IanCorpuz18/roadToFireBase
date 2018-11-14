@@ -69,7 +69,9 @@ class PickLocation extends Component {
         locationChosen: false
 
     }
-
+    componentDidUpdate(){
+        this.props.passLocation(this.state.focusedLocation)
+    }
     render() {
         let marker = null;
         if (this.state.locationChosen) {
@@ -84,8 +86,7 @@ class PickLocation extends Component {
                         initialRegion={this.state.focusedLocation}
 
                         style={styles.map}
-                        ref={ref => this.map = ref}
-                    >
+                        ref={ref => this.map = ref}>
                         {marker}
                     </MapView>
                     <Text> </Text>
