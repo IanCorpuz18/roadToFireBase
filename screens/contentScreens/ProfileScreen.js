@@ -19,7 +19,6 @@ class ProfileScreen extends Component {
   }
   
   render() {
-    console.log("Profile",this.props.focusedLocation)
    
     return (
       <ScrollView>

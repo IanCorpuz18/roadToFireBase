@@ -33,7 +33,7 @@ class TripScreen extends Component {
     })
   }
   shareButton = () => {
-    console.log("BUtton presse",this.state.locate)
+ 
     this.props.addPlaceName(this.state.placeName)
     this.props.addImage(this.state.pic)
     
@@ -47,13 +47,12 @@ class TripScreen extends Component {
 
   
   getLocation = loc => {
-    console.log("loc",loc)
+   
     this.props.addLocation(loc)
     
    
   }
   render() {
-console.log("TripScreen")
     return (
       <View style={{ flex: 1, width: "100%" }}>
         <ScrollView style={{ backgroundColor: 'white', width: "100%" }}>
