@@ -14,7 +14,7 @@ import {
 import ImagePicker from 'react-native-image-picker';
 import PickLocation from '../../assets/components/PickLocation';
 import PickImage from '../../assets/components/PickImage';
-import { addPlace, addPlaceImage } from '../../redux/actions/sharePlace';
+import { addPlace, addPlaceImage, addPlaceLocation } from '../../redux/actions/sharePlace';
 import { connect } from 'react-redux'
 import CustomButton from '../../assets/components/customButton';
 class TripScreen extends Component {
@@ -24,6 +24,7 @@ class TripScreen extends Component {
   }
   state = {
     placeName: "",
+    pic:null
   }
   changePlaceName = (val) => {
     this.setState({
@@ -33,10 +34,20 @@ class TripScreen extends Component {
   shareButton = () => {
     console.log('button Clicked')
     this.props.addPlaceName(this.state.placeName)
-
+    this.props.addImage(this.state.pic)
+    console.log(`check`, this.state.pic )
   }
   getImage = image => {
-    this.props.addImage(image)
+    this.setState({
+      pic: image
+    })
+  }
+
+  componentDidUpdate(){
+    
+  }
+  getLocation = location => {
+    this.props.addLocation(location)
   }
   render() {
 
@@ -48,7 +59,7 @@ class TripScreen extends Component {
 
             <PickImage passImage={this.getImage} />
             <Text> </Text>
-            <PickLocation />
+            <PickLocation passLocation={this.getLocation} />
           </View>
           <View>
             <Text> </Text>
@@ -79,7 +90,8 @@ class TripScreen extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     addPlaceName: (placeName) => dispatch(addPlace(placeName)),
-    addImage: (placeImage) => dispatch(addPlaceImage(placeImage))
+    addImage: (placeImage) => dispatch(addPlaceImage(placeImage)),
+    addLocation: (focusedLocation) => dispatch(addPlaceLocation(focusedLocation))
   }
 }
 export default connect(null, mapDispatchToProps)(TripScreen);

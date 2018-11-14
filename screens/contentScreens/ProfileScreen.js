@@ -10,16 +10,19 @@ import {
   Image
 } from 'react-native';
 import { connect } from 'react-redux'
-import  MapView,{ Marker } from 'react-native-maps'
+import  MapView, { Marker } from 'react-native-maps'
 import { explores } from '../../contentImages';
 import Profile from '../contentScreens/profile';
 class ProfileScreen extends Component {
   static navigationOptions = {
     header: null
   }
-
+  
   render() {
+    console.log(this.props.focusedLocation)
+   
     return (
+      <ScrollView>
       <View style={{ backgroundColor: 'white' }}>
         <Text style={{ fontSize: 40, color: '#2f4f4f', marginBottom: 15, fontWeight: 'bold' }}> PROFILE </Text>
 
@@ -32,17 +35,18 @@ class ProfileScreen extends Component {
         <View style={styles.placeholder}>
           <Image source={this.props.placeImage} style={styles.imageStyle} />
         </View>
-        <View>
+        <View  style={{width:"80%",alignSelf:"center"}}>
           <MapView
-            onPress={this.pickLocation}
+           
             initialRegion={this.props.focusedLocation}
 
-            style={styles.map}
-            ref={ref => this.map = ref}>
-           <Marker coordinate={this.props.focusedLocation} />
+            style={styles.map}>
+             
           </MapView>
+         
         </View>
       </View>
+      </ScrollView>
     );
   }
 

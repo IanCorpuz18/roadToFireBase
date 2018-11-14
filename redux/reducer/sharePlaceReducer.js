@@ -1,7 +1,9 @@
-import { ADD_PLACENAME, ADD_PLACEIMAGE } from '../actions/actionTypes';
+import { ADD_PLACENAME, ADD_PLACEIMAGE, ADD_LOCATION } from '../actions/actionTypes';
 
 initialState = {
-    placeName: null
+    placeName: null,
+    placeImage: null,
+    focusedLocation: null
 }
 
 export default reducer = (state = initialState, action) => {
@@ -17,6 +19,11 @@ export default reducer = (state = initialState, action) => {
         return {
             ...state,
             placeImage:action.placeImage
+        }
+        case ADD_LOCATION:
+        return {
+            ...state,
+            focusedLocation: action.focusedLocation
         }
         default:
         return state;
