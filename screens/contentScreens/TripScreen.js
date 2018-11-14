@@ -24,7 +24,8 @@ class TripScreen extends Component {
   }
   state = {
     placeName: "",
-    pic:null
+    pic:null,
+    locate:null
   }
   changePlaceName = (val) => {
     this.setState({
@@ -32,10 +33,11 @@ class TripScreen extends Component {
     })
   }
   shareButton = () => {
-    console.log('button Clicked')
+    console.log("BUtton presse",this.state.locate)
     this.props.addPlaceName(this.state.placeName)
     this.props.addImage(this.state.pic)
-    console.log(`check`, this.state.pic )
+    
+  
   }
   getImage = image => {
     this.setState({
@@ -43,14 +45,15 @@ class TripScreen extends Component {
     })
   }
 
-  componentDidUpdate(){
+  
+  getLocation = loc => {
+    console.log("loc",loc)
+    this.props.addLocation(loc)
     
-  }
-  getLocation = location => {
-    this.props.addLocation(location)
+   
   }
   render() {
-
+console.log("TripScreen")
     return (
       <View style={{ flex: 1, width: "100%" }}>
         <ScrollView style={{ backgroundColor: 'white', width: "100%" }}>
@@ -80,10 +83,7 @@ class TripScreen extends Component {
 
     );
   }
-  componentDidUpdate() {
-    console.log("screen is updated")
-  }
-
+ 
 
 }
 

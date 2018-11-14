@@ -19,7 +19,7 @@ class ProfileScreen extends Component {
   }
   
   render() {
-    console.log(this.props.focusedLocation)
+    console.log("Profile",this.props.focusedLocation)
    
     return (
       <ScrollView>
@@ -27,23 +27,30 @@ class ProfileScreen extends Component {
         <Text style={{ fontSize: 40, color: '#2f4f4f', marginBottom: 15, fontWeight: 'bold' }}> PROFILE </Text>
 
         <View >
-          <Profile />
+        
         </View>
+        <View style={{alignSelf:"center"}}>
         <Text>_______</Text>
         <Text>{this.props.placeName}</Text>
         <Text>_______</Text>
+        </View>
         <View style={styles.placeholder}>
           <Image source={this.props.placeImage} style={styles.imageStyle} />
         </View>
+        <Text>  </Text>
+         <Text>  </Text>
+         <Text>  </Text>
         <View  style={{width:"80%",alignSelf:"center"}}>
           <MapView
            
-            initialRegion={this.props.focusedLocation}
-
+            
+            region={this.props.focusedLocation}
             style={styles.map}>
              
           </MapView>
-         
+         <Text>  </Text>
+         <Text>  </Text>
+         <Text>  </Text>
         </View>
       </View>
       </ScrollView>
@@ -51,6 +58,7 @@ class ProfileScreen extends Component {
   }
 
 }
+
 
 const mapStateToProps = state => {
   return {
@@ -77,7 +85,7 @@ const styles = StyleSheet.create({
 
   imageStyle: {
     width: "100%",
-    height: "100%"
+    height: 150
   }
 
 

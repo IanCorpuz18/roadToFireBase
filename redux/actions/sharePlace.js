@@ -15,6 +15,7 @@ export const addPlaceImage = (placeImage) => {
     }
 }
 export const addPlaceLocation = (focusedLocation) => {
+    console.log("locate")
     return {
         type: ADD_LOCATION,
         focusedLocation: focusedLocation
