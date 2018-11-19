@@ -1,8 +1,14 @@
 import { ADD_PLACENAME, ADD_PLACEIMAGE, ADD_LOCATION } from './actionTypes';
-
+export const addPlaceCaption = (placeName) => {
+   return {
+    type: ADD_PLACENAME,
+    placeName:placeName
+   } 
+}
 export const addPlace = (placeName) => {
   
     return dispatch => {
+        dispatch(addPlaceCaption(placeName))
         const placeData = {
             name: placeName
         }
